@@ -1,0 +1,32 @@
+{
+	"schemaVersion": 1,
+	"id": "dynamic-hud",
+	"version": "${version}",
+	"name": "Dynamic HUD",
+	"description": "Hides (only) your hotbar, and adjust other HUD respective to the hidden hotbar.",
+	"authors": [
+		"Finside"
+	],
+	"contact": {
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"environment": "*",
+	"entrypoints": {
+		"client": [
+			"com.example.Main"
+		],
+		"modmenu" : [
+			"com.example.config.ModMenuIntegration"
+		]
+	},
+	"mixins": [
+		"template-mod.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.15.11",
+		"minecraft": "~1.21",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
