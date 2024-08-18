@@ -1,9 +1,9 @@
 {
 	"schemaVersion": 1,
-	"id": "dynamic-hud",
+	"id": "wynn-dynamic-hud",
 	"version": "${version}",
-	"name": "Dynamic HUD",
-	"description": "Hides (only) your hotbar, and adjust other HUD respective to the hidden hotbar.",
+	"name": "Wynn Dynamic HUD",
+	"description": "Hides (only) your hotbar, and adjust other HUD respective to the hidden hotbar, made spesifically for Wynncraft",
 	"authors": [
 		"Finside"
 	],
@@ -14,14 +14,14 @@
 	"environment": "*",
 	"entrypoints": {
 		"client": [
-			"com.example.Main"
+			"com.fin.wynndynamichud.Main"
 		],
 		"modmenu" : [
-			"com.example.config.ModMenuIntegration"
+			"com.fin.wynndynamichud.config.ModMenuIntegration"
 		]
 	},
 	"mixins": [
-		"template-mod.mixins.json"
+		"wynndynamichud.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.15.11",

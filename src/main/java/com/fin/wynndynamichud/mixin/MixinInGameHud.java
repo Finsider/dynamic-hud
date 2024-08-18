@@ -1,6 +1,6 @@
-package com.example.mixin;
+package com.fin.wynndynamichud.mixin;
 
-import com.example.Main;
+import com.fin.wynndynamichud.Main;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
@@ -134,6 +134,7 @@ public abstract class MixinInGameHud {
 
     @Unique
     private boolean HotbarIsActive() {
+        if (!Main.settings.enableDynamicHud) {return true;}
         return (System.currentTimeMillis() - hotbarSwitchTimestamp) <= (long) 1000 * Main.settings.hideHotbarSeconds;
     }
 }

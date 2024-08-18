@@ -1,6 +1,6 @@
-package com.example;
+package com.fin.wynndynamichud;
 
-import com.example.config.Settings;
+import com.fin.wynndynamichud.config.Settings;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ClientModInitializer;
