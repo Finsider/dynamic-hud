@@ -3,6 +3,8 @@
   "package": "com.fin.wynndynamichud.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "AccessorBillboardMode",
+    "MixinDisplayEntityRenderer"
   ],
   "injectors": {
     "defaultRequire": 1

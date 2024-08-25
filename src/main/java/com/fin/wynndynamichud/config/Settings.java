@@ -15,6 +15,9 @@ public class Settings implements ConfigData {
     @Comment("Delete the Wynncraft HUD shadow.")
     public boolean deleteOverlayMessageShadow = false;
 
+    @Comment("Added culling boxes for display entities. increasing Framerates significantly on Wynncraft.")
+    public boolean modifyEntityDisplayWidthHeight = false;
+
     public int hideHotbarSeconds = 5;
 
     @Comment("Similar to Raised mod, move your hotbar on the Y-axis")
@@ -22,4 +25,5 @@ public class Settings implements ConfigData {
 
     @Comment("move the Wynn' HUD when the hotbar is hidden.")
     public int moveActionBar = 0;
+
 }
