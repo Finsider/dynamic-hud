@@ -1,6 +1,6 @@
-package com.fin.wynndynamichud.mixin;
+package com.fin.wynnutilities.mixin;
 
-import com.fin.wynndynamichud.Main;
+import com.fin.wynnutilities.Main;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.decoration.DisplayEntity;
@@ -15,9 +15,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(DisplayEntity.class)
 public class MixinDisplayEntityRenderer {
-
-    //idek how this thing works, try it and see i guess
-
 
     @Shadow @Final private static TrackedData<Float> WIDTH;
 
@@ -73,6 +70,4 @@ public class MixinDisplayEntityRenderer {
         builder.add(GLOW_COLOR_OVERRIDE, -1);
         ci.cancel();
     }
-
-
 }

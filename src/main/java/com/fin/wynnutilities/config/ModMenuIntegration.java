@@ -1,4 +1,4 @@
-package com.fin.wynndynamichud.config;
+package com.fin.wynnutilities.config;
 
 import com.terraformersmc.modmenu.api.ConfigScreenFactory;
 import com.terraformersmc.modmenu.api.ModMenuApi;

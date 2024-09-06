@@ -1,6 +1,6 @@
-package com.fin.wynndynamichud.mixin;
+package com.fin.wynnutilities.mixin;
 
-import com.fin.wynndynamichud.Main;
+import com.fin.wynnutilities.Main;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;

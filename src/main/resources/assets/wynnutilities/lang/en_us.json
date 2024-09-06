@@ -7,5 +7,9 @@
   "text.autoconfig.wynndynamichud.option.modifyEntityDisplayWidthHeight": "Modify Display Entities Box (EXPERIMENTAL)",
   "text.autoconfig.wynndynamichud.option.hideHotbarSeconds": "Hide Hotbar After (Seconds)",
   "text.autoconfig.wynndynamichud.option.movehotbar": "Move Hotbar (Pixels)",
-  "text.autoconfig.wynndynamichud.option.moveActionBar": "Move Action Bar when hidden (Pixels)"
+  "text.autoconfig.wynndynamichud.option.moveActionBar": "Move Action Bar when hidden (Pixels)",
+
+  "text.autoconfig.wynndynamichud.option.heldItemSettings": "Delete Held Item Rendering",
+  "text.autoconfig.wynndynamichud.option.heldItemSettings.player": "Players",
+  "text.autoconfig.wynndynamichud.option.heldItemSettings.all": "All"
 }

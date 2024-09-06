@@ -1,27 +1,24 @@
 {
 	"schemaVersion": 1,
-	"id": "wynn-dynamic-hud",
+	"id": "wynn-utilities",
 	"version": "${version}",
-	"name": "Wynn Dynamic HUD",
-	"description": "Hides (only) your hotbar, and adjust other HUD respective to the hidden hotbar, made spesifically for Wynncraft",
+	"name": "Finside' Wynncraft Utilities",
+	"description": "Utilities specifically for Wynncraft.",
 	"authors": [
 		"Finside"
 	],
-	"contact": {
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
-	},
 	"license": "CC0-1.0",
 	"environment": "*",
 	"entrypoints": {
 		"client": [
-			"com.fin.wynndynamichud.Main"
+			"com.fin.wynnutilities.Main"
 		],
 		"modmenu" : [
-			"com.fin.wynndynamichud.config.ModMenuIntegration"
+			"com.fin.wynnutilities.config.ModMenuIntegration"
 		]
 	},
 	"mixins": [
-		"wynndynamichud.mixins.json"
+		"wynnutilities.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.15.11",
