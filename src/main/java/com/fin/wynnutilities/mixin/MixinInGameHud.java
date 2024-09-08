@@ -39,6 +39,11 @@ public abstract class MixinInGameHud {
         if (Main.settings.deleteStatusBars) ci.cancel();
     }
 
+    @Inject(at = @At("HEAD"), method = "renderMountHealth", cancellable = true)
+    private void deleteMountHealth(DrawContext context, CallbackInfo ci) {
+        if (Main.settings.deleteMountHealth) ci.cancel();
+    }
+
     @Inject(at = @At("HEAD"), method = "renderHotbar", cancellable = true)
     private void cancelHotbar(DrawContext context, RenderTickCounter tickCounter, CallbackInfo ci) {
         updateHotbarSwitchState();

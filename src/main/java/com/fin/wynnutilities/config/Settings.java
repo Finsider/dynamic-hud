@@ -5,13 +5,15 @@ import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
 import me.shedaniel.cloth.clothconfig.shadowed.blue.endless.jankson.Comment;
 
-@Config(name = "wynndynamichud")
+@Config(name = "wynnutilities")
 public class Settings implements ConfigData {
 
     public boolean enableDynamicHud = true;
 
     @Comment("Delete Health and Mana if they were present in your hotbar.")
     public boolean deleteStatusBars = false;
+
+    public boolean deleteMountHealth = false;
 
     @Comment("Delete the Wynncraft HUD shadow.")
     public boolean deleteOverlayMessageShadow = false;
