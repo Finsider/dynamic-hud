@@ -42,7 +42,7 @@ public class Settings implements ConfigData {
         public boolean deletePlayerHeldItem = false;
         public boolean deleteAllHeldItem = false;
         public boolean deletePlayerArmor = false;
-        public boolean deletePlayerNametags = false;
+        public boolean deletePlayerNametag = false;
         public boolean deleteParticles = false;
     }
     @Comment("Added culling boxes for display entities. increasing Framerates significantly on Wynncraft.")

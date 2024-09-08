@@ -15,6 +15,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MixinEntityRenderer {
     @Inject(at = @At("HEAD"), method = "render", cancellable = true)
     private void deleteNametags(Entity entity, float yaw, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, CallbackInfo ci) {
-        if (Main.settings.extraSettings.deletePlayerNametags && entity instanceof PlayerEntity) ci.cancel();
+        if (Main.settings.extraSettings.deletePlayerNametag && entity instanceof PlayerEntity) ci.cancel();
     }
 }
