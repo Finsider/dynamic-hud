@@ -22,7 +22,7 @@
   "text.autoconfig.wynnutilities.option.extraSettings.deletePlayerHeldItem": "Delete Player Held Item",
   "text.autoconfig.wynnutilities.option.extraSettings.deleteAllHeldItem": "Delete All Held Items",
   "text.autoconfig.wynnutilities.option.extraSettings.deletePlayerArmor": "Delete Players Armor",
-  "text.autoconfig.wynnutilities.option.extraSettings.deletePlayerNametags": "Delete Players Nametag",
+  "text.autoconfig.wynnutilities.option.extraSettings.deletePlayerNametag": "Delete Players Nametag",
   "text.autoconfig.wynnutilities.option.extraSettings.deleteParticles": "Delete Particles",
 
   "text.autoconfig.wynnutilities.option.modifyEntityDisplayWidthHeight": "Modify Entity Display Boxes (Requires rejoining world)",
