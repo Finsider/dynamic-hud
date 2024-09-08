@@ -21,7 +21,7 @@ public class MixinHeldItemRenderer {
     private void removeHeldItems(LivingEntity entity, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, CallbackInfo ci) {
         if (entity == MinecraftClient.getInstance().player) {return;}
 
-        if (Main.settings.heldItemSettings.player && entity instanceof PlayerEntity) ci.cancel();
-        if (Main.settings.heldItemSettings.all) {ci.cancel();}
+        if (Main.settings.extraSettings.deletePlayerHeldItem && entity instanceof PlayerEntity) ci.cancel();
+        if (Main.settings.extraSettings.deleteAllHeldItem) {ci.cancel();}
     }
 }

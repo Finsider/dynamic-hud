@@ -36,12 +36,12 @@ public abstract class MixinInGameHud {
 
     @Inject(at = @At("HEAD"), method = "renderStatusBars", cancellable = true)
     private void deleteHealthMana(DrawContext context, CallbackInfo ci) {
-        if (Main.settings.deleteStatusBars) ci.cancel();
+        if (Main.settings.wynncraftHUDSettings.deleteStatusBars) ci.cancel();
     }
 
     @Inject(at = @At("HEAD"), method = "renderMountHealth", cancellable = true)
     private void deleteMountHealth(DrawContext context, CallbackInfo ci) {
-        if (Main.settings.deleteMountHealth) ci.cancel();
+        if (Main.settings.wynncraftHUDSettings.deleteMountHealth) ci.cancel();
     }
 
     @Inject(at = @At("HEAD"), method = "renderHotbar", cancellable = true)
@@ -52,28 +52,42 @@ public abstract class MixinInGameHud {
 
     @ModifyArg(method = "renderHotbar", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawGuiTexture(Lnet/minecraft/util/Identifier;IIII)V"), index = 2)
     public int adjustHotbarY(int y) {
-        return y + Main.settings.movehotbar;
+        return y + Main.settings.dynamicHUDSettings.movehotbar;
     }
 
     @ModifyArg(method = "renderHotbar", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/hud/InGameHud;renderHotbarItem(Lnet/minecraft/client/gui/DrawContext;IILnet/minecraft/client/render/RenderTickCounter;Lnet/minecraft/entity/player/PlayerEntity;Lnet/minecraft/item/ItemStack;I)V"), index = 2)
     public int adjustHotbarItemY(int y) {
-        return y + Main.settings.movehotbar;
+        return y + Main.settings.dynamicHUDSettings.movehotbar;
     }
 
     @ModifyArg(method = "renderHeldItemTooltip", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawTextWithBackground(Lnet/minecraft/client/font/TextRenderer;Lnet/minecraft/text/Text;IIII)I"), index = 3)
     private int adjustHeldItemTooltipY(int y) {
-        return !HotbarIsActive() ? y + Main.settings.moveActionBar : y + Main.settings.movehotbar;
+        return !HotbarIsActive() ? y + Main.settings.dynamicHUDSettings.moveActionBar : y + Main.settings.dynamicHUDSettings.movehotbar;
     }
 
     @ModifyArg(method = "renderOverlayMessage", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawTextWithBackground(Lnet/minecraft/client/font/TextRenderer;Lnet/minecraft/text/Text;IIII)I"), index = 3)
     private int adjustOverlayMessageY(int y) {
-        return !HotbarIsActive() ? y + Main.settings.moveActionBar : y + Main.settings.movehotbar;
+        return !HotbarIsActive() ? y + Main.settings.dynamicHUDSettings.moveActionBar : y + Main.settings.dynamicHUDSettings.movehotbar;
+    }
+
+    @ModifyArg(method = "renderExperienceBar", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawGuiTexture(Lnet/minecraft/util/Identifier;IIII)V"),index = 2)
+    private int adjustExperienceBarHeight(int y) {
+        return !HotbarIsActive() ? y + Main.settings.dynamicHUDSettings.moveActionBar : y + Main.settings.dynamicHUDSettings.movehotbar;
+    }
+
+    @ModifyArg(method = "renderExperienceBar", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawGuiTexture(Lnet/minecraft/util/Identifier;IIIIIIII)V"),index = 6)
+    private int adjustExperienceBarHeight2(int y) {
+        return !HotbarIsActive() ? y + Main.settings.dynamicHUDSettings.moveActionBar : y + Main.settings.dynamicHUDSettings.movehotbar;
+    }
+    @ModifyArg(method = "renderMountJumpBar", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawGuiTexture(Lnet/minecraft/util/Identifier;IIII)V"),index = 2)
+    private int adjustMountBarHeight(int y) {
+        return !HotbarIsActive() ? y + Main.settings.dynamicHUDSettings.moveActionBar : y + Main.settings.dynamicHUDSettings.movehotbar;
     }
 
     //seriously why the fuck does minecraft use drawTextWithBackground and not drawText with shadow enabled so that it can be injected easier what the fuck??
     @Inject(method = "renderOverlayMessage", at = @At("HEAD"), cancellable = true)
     private void deleteOverlayMessageBackground(DrawContext context, RenderTickCounter tickCounter, CallbackInfo ci) {
-        if (!Main.settings.deleteOverlayMessageShadow) {return;}
+        if (!Main.settings.wynncraftHUDSettings.deleteOverlayMessageShadow) {return;}
 
         TextRenderer textRenderer = this.getTextRenderer();
         if (this.overlayMessage != null && this.overlayRemaining > 0) {
@@ -95,7 +109,7 @@ public abstract class MixinInGameHud {
                 }
 
 
-                int moveDynamic = !HotbarIsActive() ? Main.settings.moveActionBar : Main.settings.movehotbar;
+                int moveDynamic = !HotbarIsActive() ? Main.settings.dynamicHUDSettings.moveActionBar : Main.settings.dynamicHUDSettings.movehotbar;
                 int textWidth = textRenderer.getWidth(this.overlayMessage);
                 context.drawText(textRenderer, this.overlayMessage, -textWidth / 2, -4 + moveDynamic, j, false);
                 context.getMatrices().pop();
@@ -107,23 +121,9 @@ public abstract class MixinInGameHud {
         ci.cancel();
     }
 
-    @ModifyArg(method = "renderExperienceBar", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawGuiTexture(Lnet/minecraft/util/Identifier;IIII)V"),index = 2)
-    private int adjustExperienceBarHeight(int y) {
-        return !HotbarIsActive() ? y + Main.settings.moveActionBar : y + Main.settings.movehotbar;
-    }
-
-    @ModifyArg(method = "renderExperienceBar", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawGuiTexture(Lnet/minecraft/util/Identifier;IIIIIIII)V"),index = 6)
-    private int adjustExperienceBarHeight2(int y) {
-        return !HotbarIsActive() ? y + Main.settings.moveActionBar : y + Main.settings.movehotbar;
-    }
-    @ModifyArg(method = "renderMountJumpBar", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawGuiTexture(Lnet/minecraft/util/Identifier;IIII)V"),index = 2)
-    private int adjustMountBarHeight(int y) {
-        return !HotbarIsActive() ? y + Main.settings.moveActionBar : y + Main.settings.movehotbar;
-    }
-
     @ModifyArg(method = "renderMountJumpBar", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawContext;drawGuiTexture(Lnet/minecraft/util/Identifier;IIIIIIII)V"),index = 6)
     private int adjustfilledMountBarHeight(int y) {
-        return !HotbarIsActive() ? y + Main.settings.moveActionBar : y + Main.settings.movehotbar;
+        return !HotbarIsActive() ? y + Main.settings.dynamicHUDSettings.moveActionBar : y + Main.settings.dynamicHUDSettings.movehotbar;
     }
 
     @Unique
@@ -139,7 +139,7 @@ public abstract class MixinInGameHud {
 
     @Unique
     private boolean HotbarIsActive() {
-        if (!Main.settings.enableDynamicHud) {return true;}
-        return (System.currentTimeMillis() - hotbarSwitchTimestamp) <= (long) 1000 * Main.settings.hideHotbarSeconds;
+        if (!Main.settings.dynamicHUDSettings.enableDynamicHud) {return true;}
+        return (System.currentTimeMillis() - hotbarSwitchTimestamp) <= (long) 1000 * Main.settings.dynamicHUDSettings.hideHotbarSeconds;
     }
 }
